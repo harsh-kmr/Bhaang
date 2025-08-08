@@ -1,4 +1,4 @@
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import numpy as np
 import torch
@@ -34,11 +34,13 @@ def get_metrics_classification(y_true, y_pred, mode = "micro", class_weights = N
         precision = precision_score(y_true, y_pred)
         recall = recall_score(y_true, y_pred)
         f1 = f1_score(y_true, y_pred)
+        cm = confusion_matrix(y_true, y_pred)
         metrics = {
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1
+            "f1": f1,
+            "confusion_matrix": cm.tolist()
         }
         return metrics
     elif mode == "micro":
@@ -50,7 +52,8 @@ def get_metrics_classification(y_true, y_pred, mode = "micro", class_weights = N
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1
+            "f1": f1,
+            "confusion_matrix": confusion_matrix(y_true, y_pred).tolist()
         }
         return metrics
     elif mode == "macro":
@@ -62,7 +65,8 @@ def get_metrics_classification(y_true, y_pred, mode = "micro", class_weights = N
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1
+            "f1": f1,
+            "confusion_matrix": confusion_matrix(y_true, y_pred).tolist()
         }
         return metrics
     elif mode == "samples":
@@ -74,7 +78,8 @@ def get_metrics_classification(y_true, y_pred, mode = "micro", class_weights = N
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1
+            "f1": f1,
+            "confusion_matrix": confusion_matrix(y_true, y_pred).tolist()
         }
         return metrics
     elif mode == "weighted":
@@ -86,6 +91,7 @@ def get_metrics_classification(y_true, y_pred, mode = "micro", class_weights = N
             "accuracy": accuracy,
             "precision": precision,
             "recall": recall,
-            "f1": f1
+            "f1": f1,
+            "confusion_matrix": confusion_matrix(y_true, y_pred).tolist()
         }
         return metrics

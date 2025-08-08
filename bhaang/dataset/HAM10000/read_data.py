@@ -32,8 +32,9 @@ class pytorch_dataset(Dataset):
         else:
             raise ValueError("split must be one of 'train', 'val', or 'test'")
         
+        resize_transform = [torchvision.transforms.Resize(self.image_size)]
+        
         default_transform = [
-            torchvision.transforms.Resize(self.image_size),
             torchvision.transforms.ToTensor(),
             torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]) if self.as_rgb else torchvision.transforms.Normalize(mean=[0.5], std=[0.5]),
         ]
@@ -45,7 +46,7 @@ class pytorch_dataset(Dataset):
         else:
             user_transforms = []
         
-        all_transforms = default_transform + user_transforms
+        all_transforms = resize_transform  + user_transforms + default_transform
         self.transform = torchvision.transforms.Compose(all_transforms)
 
         self.target_transform = target_transform
