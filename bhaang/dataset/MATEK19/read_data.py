@@ -11,13 +11,11 @@ import torchvision
 from torch.utils.data import Dataset
 
 
-
-# Use package-relative path to the converted CSV so installations remain portable
 csv_path = os.path.join(
     os.path.dirname(__file__),
     "data",
     "Matek-19 Dataset",
-    "matek19_converted.csv",
+    "matek19.csv",
 )
 
 label_to_index = {'LYT': 0,
