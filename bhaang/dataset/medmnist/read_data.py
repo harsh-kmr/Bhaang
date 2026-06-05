@@ -146,7 +146,7 @@ class pytorch_dataset(Dataset):
                 img = np.expand_dims(img, axis=0)  # Add channel dimension
 
         # convert the target to a tensor
-        target = torch.tensor(target, dtype=torch.long)
+        target = torch.tensor(target, dtype=torch.long).squeeze()
         img = torch.tensor(np.array(img) / 255, dtype=torch.float32)
 
         if self.transform is not None:

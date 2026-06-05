@@ -1,6 +1,6 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: Bhaang
-Version: 0.1
+Version: 0.3
 Summary: A general purpose package for medical imaging project and Lab Work
 Author: Harsh kumar
 Author-email: harshkumar1@iisc.ac.in
@@ -8,6 +8,12 @@ Requires-Dist: numpy
 Requires-Dist: torch
 Requires-Dist: torchvision
 Requires-Dist: pillow
+Requires-Dist: transformers
+Requires-Dist: tqdm
+Requires-Dist: tabulate
+Requires-Dist: medmnist
+Requires-Dist: albumentations
+Requires-Dist: pycocotools
 Dynamic: author
 Dynamic: author-email
 Dynamic: requires-dist

@@ -2,3 +2,9 @@ numpy
 torch
 torchvision
 pillow
+transformers
+tqdm
+tabulate
+medmnist
+albumentations
+pycocotools
